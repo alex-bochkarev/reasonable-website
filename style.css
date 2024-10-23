@@ -1,0 +1,171 @@
+/* This file describes the formatting of the website. */
+
+/* Uniform colors and geometry, used throughout the whole page. */
+:root {
+    --bg-color: black;
+    --menu-bg-color: #333333;
+    --menu-bg-hover-color: #AAAAAA;
+    --fg-color: ivory;
+    --side-menu-width: 12ch;
+}
+
+/* Formatting for the main part of the website. */
+body {
+    background: var(--bg-color);
+    color: var(--fg-color);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(var(--side-menu-width) + 30px);
+    padding-top: 2ch;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    max-width: 80ch; /* I think the max recommended widht is 80 symbols
+                  * (for reading convenience). */
+    min-width: 50ch;
+    position: relative;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+section:not(.same-screen) {
+    height: 100vh;
+}
+
+/* Formatting for the navigation elements */
+
+nav {
+    opacity: 0.6;
+    background: var(--menu-bg-color);
+    z-index: 1;
+}
+
+nav:hover {
+    opacity: 0.8;
+}
+
+/* Formatting for the left-side menu */
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: var(--side-menu-width);
+}
+
+.side-menu img {
+    max-width: calc(var(--side-menu-width) - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+.side-menu ul {
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+  align-items: center;
+}
+
+.side-menu li a {
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+    color: var(--fg-color);
+}
+
+.side-menu li:hover {
+    background: var(--menu-bg-hover-color) !important;
+}
+
+/* hide the side menu if the screen is too small */
+@media only screen and (max-width:600px) {
+    .side-menu {
+        display:none;
+    }
+
+    body {
+        padding-left: 1ch;
+        padding-right: 1ch;
+    }
+}
+
+/* top menu parameters */
+.top-menu {
+    position: fixed;
+    position: -webkit-sticky; /* Safari */
+    left: 0;
+    top: 0;
+    padding-top: 5px;
+    background: var(--menu-bg-color);
+    width: 100%;
+    overflow: hidden;
+}
+
+.top-menu a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    color: var(--fg-color);
+    width: 40vw;
+}
+
+.top-menu a:hover {
+    background: var(--menu-bg-hover-color) !important;
+}
+
+.top-menu ul {
+    list-style-type: none;
+    padding-top: 1ch;
+    text-align: center;
+}
+
+.top-menu li {
+    display: inline-block;
+    margin-top: 1ch;
+}
+
+input[name='checkbox'] {
+    display: none;
+}
+
+input[name='checkbox']:not(checked) ~ ul {
+    height: 0;
+    margin: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+    transition: all 0.1s;
+}
+
+input[name='checkbox']:checked ~ ul {
+    display: inline-block;
+    height: 100%;
+    padding-left: 5px;
+    transition: all 1s;
+}
+.menu-toggle{
+    display: inline-block;
+    width: 100vw;
+    height: 2ch;
+    /* padding: 5px 5px 5px 5px; */
+    border-radius: 10px;
+    fill: var(--menu-bg-hover-color);
+}
+
+@media only screen and (min-width:601px) {
+    .top-menu {
+        display: none;
+    }
+}
