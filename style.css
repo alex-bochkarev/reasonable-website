@@ -6,6 +6,8 @@
     --menu-bg-color: #333333;
     --menu-bg-hover-color: #AAAAAA;
     --fg-color: ivory;
+    --emphasis-color: red;
+    --shaded-color: ivory;
     --side-menu-width: 12ch;
 }
 
@@ -21,6 +23,19 @@ body {
     flex-flow: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Some universal formatting elements. */
+h2 {
+    border-bottom: 1px solid var(--shaded-color);
+}
+
+em {
+    font-style: normal;
+    background: var(--emphasis-color);
+    border-radius: 5px;
+    padding: 0px 1px 1px 0px;
+    color: var(--fg-color);
 }
 
 section {
