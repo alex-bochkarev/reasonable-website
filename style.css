@@ -26,10 +26,13 @@ body {
 }
 
 /* Some universal formatting elements. */
+
+/* level-2 heading (section headings) */
 h2 {
     border-bottom: 1px solid var(--shaded-color);
 }
 
+/* emphasized text */
 em {
     font-style: normal;
     background: var(--emphasis-color);
@@ -38,10 +41,10 @@ em {
     color: var(--fg-color);
 }
 
+/* website section ("page") text */
 section {
     max-width: 80ch; /* I think the max recommended widht is 80 symbols
                   * (for reading convenience). */
-    min-width: 50ch;
     position: relative;
     text-align: justify;
     box-sizing: border-box;
@@ -51,136 +54,143 @@ section:not(.same-screen) {
     height: 100vh;
 }
 
-/* Formatting for the navigation elements */
+/* Formatting for the navigation elements,
+ * aka website menu magic
+*/
 
+/* parameters that are independent of the screen size */
 nav {
     opacity: 0.6;
     background: var(--menu-bg-color);
-    z-index: 1;
 }
 
 nav:hover {
     opacity: 0.8;
 }
 
-/* Formatting for the left-side menu */
-.side-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: var(--side-menu-width);
+input[name='checkbox'] {
+    display: none;
 }
 
-.side-menu img {
-    max-width: calc(var(--side-menu-width) - 10px);
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 0px;
-}
-
-.side-menu ul {
-  font-weight: 500;
-  white-space: nowrap;
-  position: relative;
-  list-style-type: none;
-  padding-left: 0;
-  text-align: center;
-  align-items: center;
-}
-
-.side-menu li a {
-    display: flex;
+nav a {
     text-decoration: none;
     text-align: center;
     padding: 5px 10px;
     color: var(--fg-color);
 }
 
-.side-menu li:hover {
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+nav li {
+    align: center;
+}
+
+nav li:hover {
     background: var(--menu-bg-hover-color) !important;
 }
 
-/* hide the side menu if the screen is too small */
+/* menu formatting for the case when the screen
+ * is too small (e.g., mobile phone) */
+
 @media only screen and (max-width:600px) {
-    .side-menu {
+    .hide-when-small {
         display:none;
+    }
+
+    nav img {
+        display: none;
     }
 
     body {
         padding-left: 1ch;
         padding-right: 1ch;
     }
+
+    input[name='checkbox']:not(checked) ~ ul {
+        height: 0;
+        margin: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        transition: all 0.1s;
+    }
+
+    input[name='checkbox']:checked ~ ul {
+        display: inline-block;
+        height: 100%;
+        padding-left: 5px;
+        transition: all 1s;
+    }
+
+    nav {
+        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        left: 0;
+        top: 0;
+        padding-top: 5px;
+        background: var(--menu-bg-color);
+        width: 100%;
+        overflow: hidden;
+        z-index: 1;
+        text-align: center;
+    }
+
+    nav ul {
+        width: 100%;
+        padding-top: 1ch;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    nav li {
+        width: 30vw;
+        display: inline-block;
+        margin-top: 1ch;
+        padding: 5px 10px;
+    }
+
+    nav a {
+        margin-bottom: 10px;
+        color: var(--fg-color);
+    }
+
 }
 
-/* top menu parameters */
-.top-menu {
-    position: fixed;
-    position: -webkit-sticky; /* Safari */
-    left: 0;
-    top: 0;
-    padding-top: 5px;
-    background: var(--menu-bg-color);
-    width: 100%;
-    overflow: hidden;
-}
-
-.top-menu a {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    color: var(--fg-color);
-    width: 40vw;
-}
-
-.top-menu a:hover {
-    background: var(--menu-bg-hover-color) !important;
-}
-
-.top-menu ul {
-    list-style-type: none;
-    padding-top: 1ch;
-    text-align: center;
-}
-
-.top-menu li {
-    display: inline-block;
-    margin-top: 1ch;
-}
-
-input[name='checkbox'] {
-    display: none;
-}
-
-input[name='checkbox']:not(checked) ~ ul {
-    height: 0;
-    margin: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    overflow: hidden;
-    transition: all 0.1s;
-}
-
-input[name='checkbox']:checked ~ ul {
-    display: inline-block;
-    height: 100%;
-    padding-left: 5px;
-    transition: all 1s;
-}
-.menu-toggle{
-    display: inline-block;
-    width: 100vw;
-    height: 2ch;
-    /* padding: 5px 5px 5px 5px; */
-    border-radius: 10px;
-    fill: var(--menu-bg-hover-color);
-}
+/* Menu formatting for the case when the screen
+ * is large enough (e.g., laptop or tablet) */
 
 @media only screen and (min-width:601px) {
-    .top-menu {
+    nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: var(--side-menu-width);
+    }
+
+    nav img {
+        max-width: calc(var(--side-menu-width) - 10px);
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+
+    nav ul {
+        font-weight: 500;
+        white-space: nowrap;
+        position: relative;
+        padding-left: 0;
+        align-items: center;
+    }
+
+    nav a {
+        display: flex;
+    }
+
+    .menu-topline {
         display: none;
     }
 }

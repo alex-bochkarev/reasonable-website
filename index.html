@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!-- This is a simple single-page webpage concept --
   -- for the Wu Tai Chi club in Kaiserslautern --
   -->
@@ -17,8 +18,11 @@
        (Shown on the large screens, but hidden on smaller ones,
        e.g. mobile.)-->
     <nav>
-      <span class="side-menu">
-        <img src="images/yin_yang.svg" alt="Yin and Yang symbol" />
+        <img src="images/yin_yang.svg" alt="Yin and Yang symbol"/>
+
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label class="menu-topline" for="checkbox">☰ Website menu: Wu Taiji Quan in KL</label>
+
         <ul>
           <li><a href="#Home">Home</a></li>
           <li><a href="#Termine">Termine</a></li>
@@ -26,22 +30,9 @@
           <li><a href="#Taiji">Wu Tai Chi</a></li>
           <li><a href="#Video">Videos</a></li>
           <li><a href="#Kontakt">Kontakt</a></li>
+          <span class="hide-when-small">&ndash;</span>
+          <li><a href="#Impressum">Impressum</a></li>
         </ul>
-      </span>
-      <div class="top-menu">
-        <input type="checkbox" name="checkbox" id="checkbox">
-        <label class="menu-toggle" for="checkbox">☰ Website menu: Wu Taiji Quan in KL</label>
-
-        <ul>
-          <li><a href="#Video">Videos</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-          <li><a href="#Kontakt">Kontakt</a></li>
-        </ul>
-      </div>
     </nav>
 
   <!-- Website content -->
