@@ -156,6 +156,10 @@ nav li:hover {
         color: var(--fg-color);
     }
 
+    .menu-topline {
+        width: 100vw;
+        display: inline-block;
+    }
 }
 
 /* Menu formatting for the case when the screen
