@@ -8,7 +8,8 @@
     --fg-color: ivory;
     --emphasis-color: red;
     --shaded-color: ivory;
-    --side-menu-width: 12ch;
+    --link-color: #87CEEB;
+    --side-menu-width: 15ch;
 }
 
 /* Formatting for the main part of the website. */
@@ -18,6 +19,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding-left: calc(var(--side-menu-width) + 30px);
+    padding-right: 2ch;
     padding-top: 2ch;
     display: flex;
     flex-flow: column;
@@ -26,6 +28,11 @@ body {
 }
 
 /* Some universal formatting elements. */
+
+/* Hyperlink colors */
+a {
+    color: var(--link-color);
+}
 
 /* level-2 heading (section headings) */
 h2 {
@@ -51,21 +58,39 @@ section {
 }
 
 section:not(.same-screen) {
-    height: 100vh;
+    min-height: 100vh;
 }
 
+img {
+    width: 80%;
+    max-width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* tables */
+td {
+    padding-right: 15px;
+}
+
+table {
+    /* the following two lines center the table */
+    margin-left: auto;
+    margin-right: auto;
+}
 /* Formatting for the navigation elements,
  * aka website menu magic
 */
 
 /* parameters that are independent of the screen size */
 nav {
-    opacity: 0.6;
+    opacity: 0.9;
     background: var(--menu-bg-color);
 }
 
 nav:hover {
-    opacity: 0.8;
+    opacity: 0.95;
 }
 
 input[name='checkbox'] {
@@ -76,7 +101,7 @@ nav a {
     text-decoration: none;
     text-align: center;
     padding: 5px 10px;
-    color: var(--fg-color);
+    color: var(--fg-color) !important;
 }
 
 nav ul {
