@@ -87,6 +87,7 @@ table {
 nav {
     opacity: 0.9;
     background: var(--menu-bg-color);
+    overflow: scroll;
 }
 
 nav:hover {
