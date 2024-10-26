@@ -20,7 +20,7 @@ body {
     margin-right: auto;
     padding-left: calc(var(--side-menu-width) + 30px);
     padding-right: 2ch;
-    padding-top: 2ch;
+    padding-top: 3ch;
     display: flex;
     flex-flow: column;
     align-items: center;
